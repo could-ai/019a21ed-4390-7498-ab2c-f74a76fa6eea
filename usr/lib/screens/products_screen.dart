@@ -30,7 +30,7 @@ class ProductsScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(product.name),
                   subtitle: Text('${product.description} - Stock: ${product.stock}'),
-                  trailing: Text('$${product.price.toStringAsFixed(2)}'),
+                  trailing: Text('\$${product.price.toStringAsFixed(2)}'),
                   onTap: () => _showEditProductDialog(context, product),
                 );
               },
@@ -84,8 +84,9 @@ class ProductsScreen extends StatelessWidget {
               final stock = int.tryParse(stockController.text) ?? 0;
 
               if (name.isNotEmpty && price > 0) {
+                final uuid = Uuid();
                 final product = Product(
-                  id: const Uuid().v4(),
+                  id: uuid.v4(),
                   name: name,
                   description: description,
                   price: price,

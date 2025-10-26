@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const Text('Total Ventas Hoy'),
                     Text(
-                      '$${salesProvider.getTotalSalesByDate(DateTime.now()).toStringAsFixed(2)}',
+                      '\$${salesProvider.getTotalSalesByDate(DateTime.now()).toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],

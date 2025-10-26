@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:couldai_user_app/models/sale.dart';
 import 'package:couldai_user_app/models/product.dart';
+import 'package:couldai_user_app/providers/inventory_provider.dart';
 
 class SalesProvider with ChangeNotifier {
   List<Sale> _sales = [];
@@ -19,7 +20,7 @@ class SalesProvider with ChangeNotifier {
     for (final json in salesJson) {
       final saleData = jsonDecode(json);
       final productId = saleData['productId'];
-      final product = _inventoryProvider.products.firstWhere((p) => p.id == productId);
+      final product = _inventoryProvider.products.firstWhere((p) => p.id == productId, orElse: () => null);
       if (product != null) {
         _sales.add(Sale.fromJson(saleData, product));
       }

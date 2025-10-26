@@ -38,7 +38,7 @@ class ReportsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text('Número de ventas: ${salesProvider.getSalesByDate(today).length}'),
-                    Text('Total: $${salesProvider.getTotalSalesByDate(today).toStringAsFixed(2)}'),
+                    Text('Total: \$${salesProvider.getTotalSalesByDate(today).toStringAsFixed(2)}'),
                   ],
                 ),
               ),
@@ -55,9 +55,9 @@ class ReportsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Ventas de Ayer: ${salesProvider.getSalesByDate(yesterday).length} - Total: $${salesProvider.getTotalSalesByDate(yesterday).toStringAsFixed(2)}'),
+                    Text('Ventas de Ayer: ${salesProvider.getSalesByDate(yesterday).length} - Total: \$${salesProvider.getTotalSalesByDate(yesterday).toStringAsFixed(2)}'),
                     const SizedBox(height: 5),
-                    Text('Ventas de la Semana: ${salesProvider.sales.where((sale) => sale.date.isAfter(lastWeek)).length} - Total: $${salesProvider.sales.where((sale) => sale.date.isAfter(lastWeek)).fold(0.0, (sum, sale) => sum + sale.totalPrice).toStringAsFixed(2)}'),
+                    Text('Ventas de la Semana: ${salesProvider.sales.where((sale) => sale.date.isAfter(lastWeek)).length} - Total: \$${salesProvider.sales.where((sale) => sale.date.isAfter(lastWeek)).fold(0.0, (sum, sale) => sum + sale.totalPrice).toStringAsFixed(2)}'),
                   ],
                 ),
               ),

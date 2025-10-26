@@ -32,7 +32,7 @@ class SalesScreen extends StatelessWidget {
                 return ListTile(
                   title: Text('${sale.product.name} (x${sale.quantity})'),
                   subtitle: Text('Fecha: ${sale.date.toString().split(' ')[0]}'),
-                  trailing: Text('$${sale.totalPrice.toStringAsFixed(2)}'),
+                  trailing: Text('\$${sale.totalPrice.toStringAsFixed(2)}'),
                 );
               },
             ),
@@ -82,8 +82,9 @@ class SalesScreen extends StatelessWidget {
                 final product = products.firstWhere((p) => p.id == selectedProductId);
                 if (product.stock >= quantity) {
                   final totalPrice = product.price * quantity;
+                  final uuid = Uuid();
                   final sale = Sale(
-                    id: const Uuid().v4(),
+                    id: uuid.v4(),
                     product: product,
                     quantity: quantity,
                     totalPrice: totalPrice,
